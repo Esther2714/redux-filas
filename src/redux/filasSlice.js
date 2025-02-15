@@ -40,9 +40,10 @@ export const filasSlice = createSlice({
         number: 6,
         filas: [], 
         numFilas:0,
-        superado: false
+        superado: false,
+        colorApp: "white"
     },
-    
+
     reducers: {
         setColor(state, action) {
             state.color = action.payload
@@ -59,6 +60,9 @@ export const filasSlice = createSlice({
                 return
             }
             insertarFila(state)
+        },
+        setColorApp(state, action){
+            state.colorApp = action.payload
         }
     },
 })
@@ -73,6 +77,7 @@ export const selectNumber = (state) => state.filas.number
 export const selectFilas = (state) => state.filas.filas
 export const selectSuperado = (state) => state.filas.superado
 export const selectNumFilas = (state) => state.filas.numFilas
+export const selectColorApp = (state) => state.filas.colorApp
 
 
 // Acciones exportadas
@@ -80,7 +85,8 @@ export const {
     setColor,
     setSize,
     setNumber,
-    añadirFila
+    añadirFila,
+    setColorApp
 } = filasSlice.actions
 
 // Exporta el reducer

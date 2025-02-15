@@ -1,6 +1,6 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import {
-    selectFilas, selectSuperado
+    selectFilas, setColorApp
 } from "../redux/filasSlice";
 import '../App.css'
 
@@ -12,6 +12,7 @@ function Fila({ index }) {
     const color = fila["color"]
     const number = fila["number"]
     const estilo = {backgroundColor: color, width:size, height:size}
+    const dispatch = useDispatch()
 
     return (
     
@@ -19,7 +20,11 @@ function Fila({ index }) {
             {Array.from({ length: number }, (_, i) => (
                 <div
                     className="cuadro"
-                    key={i} style={estilo}>Cuadro {index}.{i}</div>
+                    key={i} 
+                    style={estilo}
+                    onClick={() => dispatch(setColorApp(color))}>
+                        Cuadro {index}.{i}
+                    </div>
             ))}
         </div>
       
